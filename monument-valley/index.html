@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Monument Valley</title>
+    <link rel='stylesheet prefetch' href='http://d2v52k3cl9vedd.cloudfront.net/basscss/7.0.3/basscss.min.css'>
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Slabo+27px'>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body ng-app="neonHexagon" ng-controller="MainCtrl as main">
+    <h1>Explorers on the Moon</h1>
+
+    <div class="container">
+      <n-svg class="block mx-auto" size="main.size">
+        <defs>
+          <linearGradient id="black-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#444242"></stop>
+            <stop offset="60%" stop-color="#192423"></stop>
+            <stop offset="100%" stop-color="#07181F"></stop>
+          </linearGradient>
+          <linearGradient id="blue-green-1" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#528C84"></stop>
+            <stop offset="75%" stop-color="#252D2C"></stop>
+            <stop offset="100%" stop-color="#1C2625"></stop>
+          </linearGradient>
+          <linearGradient id="blue-green-1" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#528C84"></stop>
+            <stop offset="75%" stop-color="#252D2C"></stop>
+            <stop offset="100%" stop-color="#1C2625"></stop>
+          </linearGradient>
+          <linearGradient id="blue-green-2" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#B6B394"></stop>
+            <stop offset="100%" stop-color="#5B574C"></stop>
+          </linearGradient>
+        </defs>
+        <g ng-repeat="peak in main.peaks">
+          <peak fill="{{ peak.fill }}"
+            w="main.width"
+            h="main.height"
+            def="peak.def.left"
+            ng-attr-opacity="{{ peak.opacity }}"></peak>
+          <peak fill="{{ peak.fill }}"
+            w="main.width"
+            h="main.height"
+            def="peak.def.right"
+            ng-attr-opacity="{{ peak.opacity }}"></peak>
+        </g>
+        <mountain-range fill="url(#black-gradient)"
+          w="main.width"
+          h="main.height">
+        </mountain-range>
+        <cube size="main.width"></cube>
+      </n-svg>
+    </div>
+
+    <script id="templates/svg" type="text/ng-template">
+      <svg xmlns="http://www.w3.org/svg/2000"
+        ng-attr-viewBox="{{ ctrl.viewBox }}"
+        width="100%"
+        height="100%">
+        <g ng-transclude></g>
+      </svg>
+    </script>
+
+    <script id="templates/cube" type="text/ng-template">
+      <svg ng-attr-x="{{  ctrl.x }}" y="85%">
+        <panel ng-repeat="panel in ctrl.panels"
+          pts="panel.pts"
+          ng-attr-fill="{{ panel.color }}"></panel>
+      </svg>
+    </script>
+
+    <script id="templates/path" type="text/ng-template">
+      <path ng-attr-d="{{ ctrl.d }}" ></path>
+    </script>
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js'></script>
+    <script src="index.js"></script>
+  </body>
+</html>

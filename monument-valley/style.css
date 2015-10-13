@@ -1,0 +1,27 @@
+html, body {
+  background-color: #07181F;
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  background-color: #fec285;
+  background-image: linear-gradient(0deg, #fec285 0%,
+    #fec285 65%,
+    #89b096 80%,
+    #376f6a 100%);
+  height: 100%;
+  max-width: 36rem;
+}
+
+h1 {
+  color: #fff;
+  font-family: 'Slabo 27px', serif;
+  font-size: 2rem;
+  position: fixed;
+  letter-spacing: 0.3rem;
+  text-align: center;
+  text-transform: uppercase;
+  top: 8rem;
+  width: 100%;
+}
